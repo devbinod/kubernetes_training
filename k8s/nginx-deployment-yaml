@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx #these labels are used by the selectors
+# specification for deployement
+spec:
+  replicas: 5
+  selector:
+    matchLabels: #labes is matched with selector.
+      app: nginx
+
+  template:
+    metadata: # applies for the pods.
+      labels:
+        app: nginx
+    # specification for pods
+    spec: #blue print of the pods.
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 8080
+# Connecting component.
+# using levels and selector
+# meta data part contain levels  and specific part contains selectors
+
+# connecting deployment to pds.
+# connecting deployment to services.
+

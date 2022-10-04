@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080 # match with container port
+# ports in services and pod
+
+# DB service => send the request to nginx service
+# (with port 80)  => pods will call ports(targetPort: 8080(pods))
